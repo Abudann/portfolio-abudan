@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Folder } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -16,13 +17,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
     shortDescription,
     techStack,
     featured,
+    thumbnail,
   } = project.frontmatter;
 
   return (
     <Card hover className="flex h-full flex-col p-0 overflow-hidden bg-[var(--background)]">
       {/* Thumbnail placeholder or image */}
       <div className="relative aspect-video w-full bg-[var(--background-secondary)] flex items-center justify-center border-b border-[var(--border)] overflow-hidden group">
-        <Folder className="h-12 w-12 text-[var(--foreground-muted)] transition-transform duration-300 group-hover:scale-110" />
+        {thumbnail ? (
+          <Image
+            src={thumbnail}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <Folder className="h-12 w-12 text-[var(--foreground-muted)] transition-transform duration-300 group-hover:scale-110" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
 
