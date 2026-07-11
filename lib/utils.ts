@@ -15,9 +15,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatWhatsAppLink(phone: string, message?: string): string {
   const cleaned = phone.replace(/[^0-9]/g, "");
   // Convert Indonesian local format to international
-  const international = cleaned.startsWith("0")
-    ? `62${cleaned.slice(1)}`
-    : cleaned;
+  const international = cleaned.startsWith("0") ? `62${cleaned.slice(1)}` : cleaned;
   const base = `https://wa.me/${international}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
@@ -45,7 +43,10 @@ export const siteConfig = {
     github: "https://github.com/Abudann",
     linkedin: "https://linkedin.com/in/abudan",
     email: "mailto:abudanoffice@gmail.com",
-    whatsapp: formatWhatsAppLink("0857-1006-3824", "Halo Abudan, saya tertarik untuk berdiskusi tentang project."),
+    whatsapp: formatWhatsAppLink(
+      "0857-1006-3824",
+      "Halo Abudan, saya tertarik untuk berdiskusi tentang project."
+    ),
   },
   stats: {
     projectsCompleted: 4,

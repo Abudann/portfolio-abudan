@@ -6,20 +6,13 @@ interface BadgeProps {
   className?: string;
 }
 
-export function Badge({
-  children,
-  variant = "default",
-  className,
-}: BadgeProps) {
+export function Badge({ children, variant = "default", className }: BadgeProps) {
   const variants = {
     default:
       "bg-[var(--background-secondary)] text-[var(--foreground-secondary)] border border-[var(--border)]",
-    accent:
-      "bg-accent-400/10 text-accent-400 border border-accent-400/20",
-    success:
-      "bg-success/10 text-success border border-success/20",
-    outline:
-      "border border-[var(--border)] text-[var(--foreground-muted)]",
+    accent: "bg-accent-400/10 text-accent-400 border border-accent-400/20",
+    success: "bg-success/10 text-success border border-success/20",
+    outline: "border border-[var(--border)] text-[var(--foreground-muted)]",
   };
 
   return (

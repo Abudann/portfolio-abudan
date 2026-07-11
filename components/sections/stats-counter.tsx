@@ -56,7 +56,7 @@ function StatItem({ icon: Icon, value, suffix = "", label }: StatItemProps) {
 
   return (
     <div ref={ref} className="flex flex-col items-center gap-2 px-6 py-4">
-      <Icon className="h-6 w-6 text-accent-400 mb-1" />
+      <Icon className="text-accent-400 mb-1 h-6 w-6" />
       <span className="font-heading text-3xl font-bold text-[var(--foreground)] md:text-4xl">
         {count}
         {suffix}

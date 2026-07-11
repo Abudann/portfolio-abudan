@@ -10,20 +10,13 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const {
-    title,
-    slug,
-    category,
-    shortDescription,
-    techStack,
-    featured,
-    thumbnail,
-  } = project.frontmatter;
+  const { title, slug, category, shortDescription, techStack, featured, thumbnail } =
+    project.frontmatter;
 
   return (
-    <Card hover className="flex h-full flex-col p-0 overflow-hidden bg-[var(--background)]">
+    <Card hover className="flex h-full flex-col overflow-hidden bg-[var(--background)] p-0">
       {/* Thumbnail placeholder or image */}
-      <div className="relative aspect-video w-full bg-[var(--background-secondary)] flex items-center justify-center border-b border-[var(--border)] overflow-hidden group">
+      <div className="group relative flex aspect-video w-full items-center justify-center overflow-hidden border-b border-[var(--border)] bg-[var(--background-secondary)]">
         {thumbnail ? (
           <Image
             src={thumbnail}
@@ -43,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {featured && <Badge variant="accent">Featured</Badge>}
         </div>
 
-        <h3 className="font-heading text-xl font-semibold text-[var(--foreground)] mb-2 transition-colors hover:text-accent-400">
+        <h3 className="font-heading hover:text-accent-400 mb-2 text-xl font-semibold text-[var(--foreground)] transition-colors">
           <Link href={`/projects/${slug}`}>
             {/* Extended clickable area for better accessibility */}
             <span className="absolute inset-0" aria-hidden="true" />
@@ -51,17 +44,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </Link>
         </h3>
 
-        <p className="mb-6 flex-1 text-sm text-[var(--foreground-secondary)] line-clamp-3">
+        <p className="mb-6 line-clamp-3 flex-1 text-sm text-[var(--foreground-secondary)]">
           {shortDescription}
         </p>
 
         <div className="mt-auto space-y-4">
           <div className="flex flex-wrap gap-2">
             {techStack.slice(0, 4).map((tech) => (
-              <span
-                key={tech}
-                className="text-xs font-medium text-[var(--foreground-muted)]"
-              >
+              <span key={tech} className="text-xs font-medium text-[var(--foreground-muted)]">
                 {tech}
               </span>
             ))}
@@ -72,7 +62,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
           </div>
 
-          <div className="flex items-center gap-2 text-sm font-semibold text-accent-400">
+          <div className="text-accent-400 flex items-center gap-2 text-sm font-semibold">
             Lihat Detail
             <ArrowRight className="h-4 w-4" />
           </div>

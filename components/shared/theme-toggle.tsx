@@ -28,21 +28,17 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="group relative flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm transition-all duration-300 hover:border-[var(--border-hover)] hover:shadow-soft"
+      className="group hover:shadow-soft relative flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--glass-bg)] backdrop-blur-sm transition-all duration-300 hover:border-[var(--border-hover)]"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       <Sun
         className={`absolute h-5 w-5 transition-all duration-300 ${
-          isDark
-            ? "rotate-90 scale-0 opacity-0"
-            : "rotate-0 scale-100 opacity-100 text-amber-500"
+          isDark ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 text-amber-500 opacity-100"
         }`}
       />
       <Moon
         className={`absolute h-5 w-5 transition-all duration-300 ${
-          isDark
-            ? "rotate-0 scale-100 opacity-100 text-accent-400"
-            : "-rotate-90 scale-0 opacity-0"
+          isDark ? "text-accent-400 scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"
         }`}
       />
     </button>

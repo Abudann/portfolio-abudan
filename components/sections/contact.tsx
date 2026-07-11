@@ -61,7 +61,7 @@ export function Contact() {
       };
 
   return (
-    <section id="contact" className="py-24 bg-[var(--background)]">
+    <section id="contact" className="bg-[var(--background)] py-24">
       <div className="section-container max-w-5xl">
         <SectionHeading
           title="Get in Touch"
@@ -71,21 +71,21 @@ export function Contact() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Info */}
           <motion.div {...(fadeInUp as any)}>
-            <h3 className="font-heading text-2xl font-bold text-[var(--foreground)] mb-6">
+            <h3 className="font-heading mb-6 text-2xl font-bold text-[var(--foreground)]">
               Mari Berkolaborasi
             </h3>
-            <p className="mb-8 text-[var(--foreground-secondary)] leading-relaxed">
-              Saya selalu terbuka untuk mendiskusikan peluang proyek web development, 
-              kolaborasi, atau peran fullstack developer. Hubungi saya melalui form di samping 
-              atau langsung lewat kontak di bawah.
+            <p className="mb-8 leading-relaxed text-[var(--foreground-secondary)]">
+              Saya selalu terbuka untuk mendiskusikan peluang proyek web development, kolaborasi,
+              atau peran fullstack developer. Hubungi saya melalui form di samping atau langsung
+              lewat kontak di bawah.
             </p>
 
             <div className="space-y-6">
               <a
                 href={`mailto:${siteConfig.social.email}`}
-                className="group flex items-center gap-4 text-[var(--foreground-secondary)] transition-colors hover:text-accent-400"
+                className="group hover:text-accent-400 flex items-center gap-4 text-[var(--foreground-secondary)] transition-colors"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--background-secondary)] transition-colors group-hover:bg-accent-400/10">
+                <div className="group-hover:bg-accent-400/10 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--background-secondary)] transition-colors">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
@@ -98,9 +98,9 @@ export function Contact() {
                 href={siteConfig.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 text-[var(--foreground-secondary)] transition-colors hover:text-success"
+                className="group hover:text-success flex items-center gap-4 text-[var(--foreground-secondary)] transition-colors"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--background-secondary)] transition-colors group-hover:bg-success/10">
+                <div className="group-hover:bg-success/10 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--background-secondary)] transition-colors">
                   <WhatsAppIcon className="h-5 w-5" />
                 </div>
                 <div>
@@ -122,7 +122,7 @@ export function Contact() {
 
             {/* Social Links */}
             <div className="mt-12">
-              <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
+              <h4 className="mb-4 text-sm font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
                 Social Media
               </h4>
               <div className="flex gap-4">
@@ -130,7 +130,7 @@ export function Contact() {
                   href={siteConfig.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] text-[var(--foreground-secondary)] transition-all hover:border-accent-400 hover:text-accent-400 hover:bg-accent-400/5"
+                  className="hover:border-accent-400 hover:text-accent-400 hover:bg-accent-400/5 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] text-[var(--foreground-secondary)] transition-all"
                   aria-label="LinkedIn"
                 >
                   <LinkedInIcon className="h-4 w-4" />
@@ -142,11 +142,11 @@ export function Contact() {
           {/* Contact Form */}
           <motion.div {...(fadeInUp as any)} className="glass rounded-2xl p-6 md:p-8">
             {status === "success" ? (
-              <div className="flex h-full flex-col items-center justify-center text-center py-12">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-success/10">
-                  <CheckCircle2 className="h-8 w-8 text-success" />
+              <div className="flex h-full flex-col items-center justify-center py-12 text-center">
+                <div className="bg-success/10 mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+                  <CheckCircle2 className="text-success h-8 w-8" />
                 </div>
-                <h3 className="mb-2 font-heading text-2xl font-bold text-[var(--foreground)]">
+                <h3 className="font-heading mb-2 text-2xl font-bold text-[var(--foreground)]">
                   Pesan Terkirim!
                 </h3>
                 <p className="mb-6 text-[var(--foreground-secondary)]">
@@ -168,7 +168,7 @@ export function Contact() {
                       id="name"
                       name="name"
                       required
-                      className="rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:border-accent-400 focus:outline-none focus:ring-1 focus:ring-accent-400"
+                      className="focus:border-accent-400 focus:ring-accent-400 rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:ring-1 focus:outline-none"
                       placeholder="Nama Anda"
                     />
                   </div>
@@ -181,7 +181,7 @@ export function Contact() {
                       id="email"
                       name="email"
                       required
-                      className="rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:border-accent-400 focus:outline-none focus:ring-1 focus:ring-accent-400"
+                      className="focus:border-accent-400 focus:ring-accent-400 rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:ring-1 focus:outline-none"
                       placeholder="email@anda.com"
                     />
                   </div>
@@ -196,7 +196,7 @@ export function Contact() {
                     id="subject"
                     name="subject"
                     required
-                    className="rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:border-accent-400 focus:outline-none focus:ring-1 focus:ring-accent-400"
+                    className="focus:border-accent-400 focus:ring-accent-400 rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:ring-1 focus:outline-none"
                     placeholder="Subjek Pesan"
                   />
                 </div>
@@ -210,13 +210,13 @@ export function Contact() {
                     name="message"
                     required
                     rows={5}
-                    className="resize-y rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:border-accent-400 focus:outline-none focus:ring-1 focus:ring-accent-400"
+                    className="focus:border-accent-400 focus:ring-accent-400 resize-y rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] px-4 py-3 text-sm text-[var(--foreground)] transition-colors focus:ring-1 focus:outline-none"
                     placeholder="Tulis pesan Anda di sini..."
                   />
                 </div>
 
                 {/* Cloudflare Turnstile */}
-                <div className="mt-2 flex justify-center sm:justify-start overflow-hidden">
+                <div className="mt-2 flex justify-center overflow-hidden sm:justify-start">
                   <Turnstile
                     siteKey={turnstileSiteKey}
                     onSuccess={setToken}
@@ -227,7 +227,7 @@ export function Contact() {
                 </div>
 
                 {status === "error" && (
-                  <p className="text-sm font-medium text-error mt-2">
+                  <p className="text-error mt-2 text-sm font-medium">
                     Gagal mengirim pesan. Silakan coba lagi atau hubungi via email/WhatsApp.
                   </p>
                 )}

@@ -12,11 +12,7 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
@@ -28,11 +24,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
@@ -48,7 +40,7 @@ export default async function ProjectDetailPage({
         {/* Back navigation */}
         <Link
           href="/#projects"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[var(--foreground-secondary)] transition-colors hover:text-accent-400"
+          className="hover:text-accent-400 mb-8 inline-flex items-center gap-2 text-sm font-medium text-[var(--foreground-secondary)] transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Kembali ke Projects
@@ -58,16 +50,14 @@ export default async function ProjectDetailPage({
         <header className="mb-12">
           <div className="mb-4 flex items-center gap-3">
             <Badge variant="outline">{frontmatter.category}</Badge>
-            <span className="text-sm font-medium text-accent-400">
-              {frontmatter.timeline}
-            </span>
+            <span className="text-accent-400 text-sm font-medium">{frontmatter.timeline}</span>
           </div>
 
-          <h1 className="mb-6 font-heading text-4xl font-bold text-[var(--foreground)] md:text-5xl">
+          <h1 className="font-heading mb-6 text-4xl font-bold text-[var(--foreground)] md:text-5xl">
             {frontmatter.title}
           </h1>
 
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="mb-8 flex flex-wrap gap-4">
             {frontmatter.demoUrl && (
               <a href={frontmatter.demoUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="primary" size="sm">
@@ -87,22 +77,22 @@ export default async function ProjectDetailPage({
           </div>
 
           {/* Hero Thumbnail */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)] flex items-center justify-center">
-             <Folder className="h-20 w-20 text-[var(--foreground-muted)] opacity-50" />
-             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 to-transparent" />
+          <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)]">
+            <Folder className="h-20 w-20 text-[var(--foreground-muted)] opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 to-transparent" />
           </div>
         </header>
 
         {/* Core Metadata */}
         <div className="mb-16 grid gap-8 rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)] p-6 md:grid-cols-2 md:p-8">
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
+            <h3 className="mb-2 text-sm font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
               Peran Saya
             </h3>
             <p className="font-medium text-[var(--foreground)]">{frontmatter.role}</p>
           </div>
           <div>
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
+            <h3 className="mb-2 text-sm font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
               Tech Stack
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -116,56 +106,46 @@ export default async function ProjectDetailPage({
         </div>
 
         {/* Structured Content (Problem, Solution, etc.) */}
-        <div className="prose prose-zinc dark:prose-invert max-w-none mb-16">
-          <h2 className="font-heading text-2xl font-bold text-[var(--foreground)] mt-8 mb-4">
+        <div className="prose prose-zinc dark:prose-invert mb-16 max-w-none">
+          <h2 className="font-heading mt-8 mb-4 text-2xl font-bold text-[var(--foreground)]">
             Latar Belakang
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div>
-              <h3 className="text-lg font-semibold text-error mb-2">Problem</h3>
-              <p className="text-[var(--foreground-secondary)]">
-                {frontmatter.problem}
-              </p>
+              <h3 className="text-error mb-2 text-lg font-semibold">Problem</h3>
+              <p className="text-[var(--foreground-secondary)]">{frontmatter.problem}</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-success mb-2">Solution</h3>
-              <p className="text-[var(--foreground-secondary)]">
-                {frontmatter.solution}
-              </p>
+              <h3 className="text-success mb-2 text-lg font-semibold">Solution</h3>
+              <p className="text-[var(--foreground-secondary)]">{frontmatter.solution}</p>
             </div>
           </div>
 
-          <h2 className="font-heading text-2xl font-bold text-[var(--foreground)] mt-12 mb-4">
+          <h2 className="font-heading mt-12 mb-4 text-2xl font-bold text-[var(--foreground)]">
             Fitur Utama
           </h2>
-          <ul className="list-disc pl-5 space-y-2 text-[var(--foreground-secondary)]">
+          <ul className="list-disc space-y-2 pl-5 text-[var(--foreground-secondary)]">
             {frontmatter.features.map((feature, i) => (
               <li key={i}>{feature}</li>
             ))}
           </ul>
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="rounded-xl border border-accent-400/20 bg-accent-400/5 p-6">
-              <h3 className="font-heading text-xl font-semibold text-accent-400 mb-3">
-                Tantangan
-              </h3>
-              <p className="text-[var(--foreground-secondary)]">
-                {frontmatter.challenges}
-              </p>
+            <div className="border-accent-400/20 bg-accent-400/5 rounded-xl border p-6">
+              <h3 className="font-heading text-accent-400 mb-3 text-xl font-semibold">Tantangan</h3>
+              <p className="text-[var(--foreground-secondary)]">{frontmatter.challenges}</p>
             </div>
             <div className="rounded-xl border border-amber-400/20 bg-amber-400/5 p-6">
-              <h3 className="font-heading text-xl font-semibold text-amber-500 mb-3">
+              <h3 className="font-heading mb-3 text-xl font-semibold text-amber-500">
                 Lessons Learned
               </h3>
-              <p className="text-[var(--foreground-secondary)]">
-                {frontmatter.lessonsLearned}
-              </p>
+              <p className="text-[var(--foreground-secondary)]">{frontmatter.lessonsLearned}</p>
             </div>
           </div>
         </div>
 
         {/* Render MDX content (usually deeper details if provided) */}
-        <div className="prose prose-zinc dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-accent-400 hover:prose-a:text-accent-300">
+        <div className="prose prose-zinc dark:prose-invert prose-headings:font-heading prose-a:text-accent-400 hover:prose-a:text-accent-300 max-w-none">
           <MDXRemote source={content} />
         </div>
       </div>

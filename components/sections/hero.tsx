@@ -75,17 +75,14 @@ export function Hero() {
   const itemProps = prefersReducedMotion ? {} : { variants: itemVariants };
 
   return (
-    <section
-      id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden"
-    >
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-mesh" />
-      <div className="absolute inset-0 bg-grid opacity-40" />
+      <div className="bg-mesh absolute inset-0" />
+      <div className="bg-grid absolute inset-0 opacity-40" />
 
       {/* Gradient orb decorations */}
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-accent-400/5 blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-accent-500/5 blur-3xl" />
+      <div className="bg-accent-400/5 absolute -top-40 -right-40 h-96 w-96 rounded-full blur-3xl" />
+      <div className="bg-accent-500/5 absolute -bottom-40 -left-40 h-96 w-96 rounded-full blur-3xl" />
 
       <div className="section-container relative z-10 w-full py-20 pt-24">
         <MotionWrapper
@@ -99,8 +96,8 @@ export function Hero() {
               {siteConfig.availableForWork && (
                 <Badge variant="success" className="mb-6">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-success opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                    <span className="animate-pulse-dot bg-success absolute inline-flex h-full w-full rounded-full opacity-75" />
+                    <span className="bg-success relative inline-flex h-2 w-2 rounded-full" />
                   </span>
                   Available for Work
                 </Badge>
@@ -109,10 +106,8 @@ export function Hero() {
 
             {/* Greeting + Name */}
             <MotionItem {...itemProps}>
-              <p className="text-base text-[var(--foreground-secondary)] md:text-lg">
-                Halo, saya
-              </p>
-              <h1 className="mt-2 font-heading text-5xl font-bold tracking-tight text-[var(--foreground)] md:text-6xl lg:text-7xl">
+              <p className="text-base text-[var(--foreground-secondary)] md:text-lg">Halo, saya</p>
+              <h1 className="font-heading mt-2 text-5xl font-bold tracking-tight text-[var(--foreground)] md:text-6xl lg:text-7xl">
                 {siteConfig.name}
                 <span className="text-accent-400">.</span>
               </h1>
@@ -120,7 +115,7 @@ export function Hero() {
 
             {/* Typing text roles */}
             <MotionItem {...itemProps}>
-              <div className="mt-4 text-xl font-medium text-accent-400 md:text-2xl">
+              <div className="text-accent-400 mt-4 text-xl font-medium md:text-2xl">
                 <TypingText texts={[...siteConfig.roles]} />
               </div>
             </MotionItem>
@@ -161,7 +156,7 @@ export function Hero() {
                       href={link.href}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--glass-bg)] text-[var(--foreground-secondary)] backdrop-blur-sm transition-all duration-200 hover:border-accent-400 hover:text-accent-400 hover:shadow-soft hover:scale-105"
+                      className="hover:border-accent-400 hover:text-accent-400 hover:shadow-soft flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--glass-bg)] text-[var(--foreground-secondary)] backdrop-blur-sm transition-all duration-200 hover:scale-105"
                       aria-label={link.label}
                     >
                       <Icon className="h-5 w-5" />
@@ -173,16 +168,13 @@ export function Hero() {
           </div>
 
           {/* Profile photo */}
-          <MotionItem
-            {...itemProps}
-            className="relative flex-shrink-0"
-          >
+          <MotionItem {...itemProps} className="relative flex-shrink-0">
             <div className="relative">
               {/* Glow ring */}
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-accent-400/30 via-accent-500/10 to-amber-400/20 blur-lg" />
+              <div className="from-accent-400/30 via-accent-500/10 absolute -inset-2 rounded-full bg-gradient-to-br to-amber-400/20 blur-lg" />
 
               {/* Photo container */}
-              <div className="relative h-64 w-64 overflow-hidden rounded-full border-2 border-accent-400/20 shadow-elevated md:h-80 md:w-80 lg:h-96 lg:w-96">
+              <div className="border-accent-400/20 shadow-elevated relative h-64 w-64 overflow-hidden rounded-full border-2 md:h-80 md:w-80 lg:h-96 lg:w-96">
                 <Image
                   src="/images/abudan-formal.jpeg"
                   alt="Foto profil Abudan — Software Engineer"
@@ -194,8 +186,8 @@ export function Hero() {
               </div>
 
               {/* Decorative dot */}
-              <div className="absolute -right-2 top-8 h-4 w-4 rounded-full bg-accent-400 shadow-lg" />
-              <div className="absolute -left-3 bottom-12 h-3 w-3 rounded-full bg-amber-400 shadow-lg" />
+              <div className="bg-accent-400 absolute top-8 -right-2 h-4 w-4 rounded-full shadow-lg" />
+              <div className="absolute bottom-12 -left-3 h-3 w-3 rounded-full bg-amber-400 shadow-lg" />
             </div>
           </MotionItem>
         </MotionWrapper>
@@ -209,11 +201,11 @@ export function Hero() {
         <div className="mt-12 flex justify-center">
           <a
             href="#about"
-            className="flex flex-col items-center gap-2 text-[var(--foreground-muted)] transition-colors hover:text-accent-400"
+            className="hover:text-accent-400 flex flex-col items-center gap-2 text-[var(--foreground-muted)] transition-colors"
             aria-label="Scroll to About section"
           >
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <ChevronDown className="h-5 w-5 animate-bounce-subtle" />
+            <span className="text-xs tracking-widest uppercase">Scroll</span>
+            <ChevronDown className="animate-bounce-subtle h-5 w-5" />
           </a>
         </div>
       </div>

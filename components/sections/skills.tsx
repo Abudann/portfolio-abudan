@@ -3,16 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Card } from "@/components/ui/card";
-import {
-  Code2,
-  Database,
-  Globe,
-  Layout,
-  Server,
-  Terminal,
-  Wrench,
-  Users,
-} from "lucide-react";
+import { Code2, Database, Globe, Layout, Server, Terminal, Wrench, Users } from "lucide-react";
 
 const skillsData = [
   {
@@ -88,7 +79,7 @@ export function Skills() {
       };
 
   return (
-    <section id="skills" className="py-24 bg-[var(--background-secondary)]">
+    <section id="skills" className="bg-[var(--background-secondary)] py-24">
       <div className="section-container">
         <SectionHeading
           title="Skills & Expertise"
@@ -108,8 +99,8 @@ export function Skills() {
               <motion.div key={category.category} variants={itemVariants as any}>
                 <Card className="h-full bg-[var(--background)]">
                   <div className="mb-6 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-400/10">
-                      <Icon className="h-5 w-5 text-accent-400" />
+                    <div className="bg-accent-400/10 flex h-10 w-10 items-center justify-center rounded-xl">
+                      <Icon className="text-accent-400 h-5 w-5" />
                     </div>
                     <h3 className="font-heading text-xl font-semibold text-[var(--foreground)]">
                       {category.category}
@@ -120,12 +111,8 @@ export function Skills() {
                     {category.items.map((skill) => (
                       <div key={skill.name}>
                         <div className="mb-1.5 flex justify-between text-sm">
-                          <span className="font-medium text-[var(--foreground)]">
-                            {skill.name}
-                          </span>
-                          <span className="text-[var(--foreground-muted)]">
-                            {skill.levelText}
-                          </span>
+                          <span className="font-medium text-[var(--foreground)]">{skill.name}</span>
+                          <span className="text-[var(--foreground-muted)]">{skill.levelText}</span>
                         </div>
                         {/* Progress Bar Container */}
                         <div
@@ -138,8 +125,10 @@ export function Skills() {
                         >
                           {/* Progress Bar Fill */}
                           <motion.div
-                            className="h-full rounded-full bg-accent-400"
-                            initial={prefersReducedMotion ? { width: `${skill.level}%` } : { width: 0 }}
+                            className="bg-accent-400 h-full rounded-full"
+                            initial={
+                              prefersReducedMotion ? { width: `${skill.level}%` } : { width: 0 }
+                            }
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true }}
                             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}

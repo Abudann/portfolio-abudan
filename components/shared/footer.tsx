@@ -56,7 +56,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-[var(--foreground-secondary)] transition-colors hover:text-accent-400"
+                    className="hover:text-accent-400 text-sm text-[var(--foreground-secondary)] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -74,12 +74,8 @@ export function Footer() {
                   key={link.label}
                   href={link.href}
                   target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={
-                    link.href.startsWith("mailto:")
-                      ? undefined
-                      : "noopener noreferrer"
-                  }
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] text-[var(--foreground-secondary)] transition-all duration-200 hover:border-accent-400 hover:text-accent-400 hover:shadow-soft"
+                  rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="hover:border-accent-400 hover:text-accent-400 hover:shadow-soft flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] text-[var(--foreground-secondary)] transition-all duration-200"
                   aria-label={`Visit ${link.label}`}
                 >
                   <Icon className="h-4 w-4" />
@@ -95,14 +91,15 @@ export function Footer() {
         {/* Bottom section */}
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="flex items-center gap-1 text-sm text-[var(--foreground-muted)]">
-            © {currentYear} {siteConfig.name}. All rights reserved. {" "}
-            <span className="hidden md:inline px-1">•</span> {" "}
-            <a href="/privacy" className="hover:text-accent-400 transition-colors">Privacy Policy</a>
+            © {currentYear} {siteConfig.name}. All rights reserved.{" "}
+            <span className="hidden px-1 md:inline">•</span>{" "}
+            <a href="/privacy" className="hover:text-accent-400 transition-colors">
+              Privacy Policy
+            </a>
           </p>
           <p className="flex items-center gap-1 text-sm text-[var(--foreground-muted)]">
-            Built with{" "}
-            <Heart className="inline h-3.5 w-3.5 text-error" fill="currentColor" />{" "}
-            using Next.js & Tailwind CSS
+            Built with <Heart className="text-error inline h-3.5 w-3.5" fill="currentColor" /> using
+            Next.js & Tailwind CSS
           </p>
         </div>
       </div>

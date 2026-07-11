@@ -15,10 +15,10 @@ export default function NotFound() {
           </span>
         </div>
       </div>
-      
+
       <p className="mb-8 max-w-md text-base text-[var(--foreground-secondary)] sm:text-lg">
-        Maaf, halaman yang Anda cari mungkin telah dihapus, diubah namanya, atau
-        sementara tidak tersedia.
+        Maaf, halaman yang Anda cari mungkin telah dihapus, diubah namanya, atau sementara tidak
+        tersedia.
       </p>
 
       <Link href="/">

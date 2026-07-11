@@ -61,7 +61,7 @@ export function Projects({ projects }: ProjectsProps) {
                 aria-selected={isActive}
                 aria-controls="project-grid"
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 ${
+                className={`focus-visible:outline-accent-400 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 ${
                   isActive
                     ? "bg-accent-400 text-navy-950 shadow-md"
                     : "bg-[var(--background-secondary)] text-[var(--foreground-secondary)] hover:bg-[var(--border-hover)] hover:text-[var(--foreground)]"

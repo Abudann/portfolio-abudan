@@ -1,17 +1,17 @@
 # 🚀 Abudan — Personal Portfolio
 
-Selamat datang di repositori *personal portfolio* saya! Website ini menampilkan perjalanan saya sebagai seorang *Software Engineer*, keahlian yang saya miliki, serta berbagai proyek yang telah saya buat.
+Selamat datang di repositori _personal portfolio_ saya! Website ini menampilkan perjalanan saya sebagai seorang _Software Engineer_, keahlian yang saya miliki, serta berbagai proyek yang telah saya buat.
 
-🌍 **Live Demo:** [portfolio-abudan.vercel.app](https://portfolio-abudan.vercel.app) *(Ganti dengan link Vercel asli Anda nanti)*
+🌍 **Live Demo:** [portfolio-abudan.vercel.app](https://portfolio-abudan.vercel.app) _(Ganti dengan link Vercel asli Anda nanti)_
 
 ## ✨ Fitur Utama
 
-- **UI Modern & Responsif:** Dibangun dengan Tailwind CSS v4, menampilkan efek *glassmorphism*, gradasi dinamis, dan animasi mikro yang detail.
-- **Proyek Dinamis (MDX):** Semua data proyek dikelola menggunakan file Markdown (`.mdx`) sederhana di dalam folder `content/projects/`. Tidak perlu *database*!
+- **UI Modern & Responsif:** Dibangun dengan Tailwind CSS v4, menampilkan efek _glassmorphism_, gradasi dinamis, dan animasi mikro yang detail.
+- **Proyek Dinamis (MDX):** Semua data proyek dikelola menggunakan file Markdown (`.mdx`) sederhana di dalam folder `content/projects/`. Tidak perlu _database_!
 - **Animasi Halus:** Menggunakan Framer Motion dengan dukungan penuh untuk aksesibilitas (`prefers-reduced-motion`).
 - **Mode Gelap/Terang:** Pergantian tema yang mulus dan otomatis menyesuaikan preferensi sistem pengguna.
-- **Formulir Kontak Anti-Spam:** Terintegrasi dengan Cloudflare Turnstile untuk mencegah masuknya *bot* atau *spam*.
-- **Optimasi SEO:** Dilengkapi dengan *Open Graph* (OG) image dinamis, *auto-generated* `robots.txt`, dan struktur metadata yang lengkap.
+- **Formulir Kontak Anti-Spam:** Terintegrasi dengan Cloudflare Turnstile untuk mencegah masuknya _bot_ atau _spam_.
+- **Optimasi SEO:** Dilengkapi dengan _Open Graph_ (OG) image dinamis, _auto-generated_ `robots.txt`, dan struktur metadata yang lengkap.
 
 ## 🛠️ Tech Stack (Teknologi)
 
@@ -28,30 +28,35 @@ Selamat datang di repositori *personal portfolio* saya! Website ini menampilkan 
 Untuk menjalankan proyek ini di komputer Anda, ikuti langkah-langkah berikut:
 
 1. **Clone repository ini**
+
    ```bash
    git clone https://github.com/username-anda/portfolio-abudan.git
    cd portfolio-abudan
    ```
 
 2. **Install semua dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Atur Environment Variables (Opsional)**
    Jika Anda ingin menguji integrasi form kontak (Turnstile) secara lokal, buat file `.env.local` di folder utama:
+
    ```env
    NEXT_PUBLIC_TURNSTILE_SITE_KEY=site_key_anda
    TURNSTILE_SECRET_KEY=secret_key_anda
    ```
-   *(Jika tidak diisi, form kontak akan menggunakan kunci tes bawaan sehingga tidak akan error saat di-run lokal).*
 
-4. **Jalankan *development server***
+   _(Jika tidak diisi, form kontak akan menggunakan kunci tes bawaan sehingga tidak akan error saat di-run lokal)._
+
+4. **Jalankan _development server_**
+
    ```bash
    npm run dev
    ```
 
-5. Buka [http://localhost:3000](http://localhost:3000) di *browser* Anda.
+5. Buka [http://localhost:3000](http://localhost:3000) di _browser_ Anda.
 
 ## 📝 Cara Menambahkan Proyek Baru
 
@@ -59,7 +64,7 @@ Menambahkan proyek ke website ini sangatlah mudah berkat arsitektur MDX. Anda ti
 
 1. Buka folder `content/projects/`.
 2. Buat file baru dengan ekstensi `.mdx`, contohnya: `aplikasi-baru.mdx`.
-3. Tambahkan informasi (*metadata/frontmatter*) berikut di baris paling atas file:
+3. Tambahkan informasi (_metadata/frontmatter_) berikut di baris paling atas file:
 
 ```yaml
 ---
@@ -81,8 +86,9 @@ featured: true
 thumbnail: "/images/gambar-aplikasi.png"
 ---
 ```
-4. Anda bisa menulis cerita atau detail teknis tambahan menggunakan format tulisan *Markdown* biasa di bawah garis `---` tersebut. Proyek ini akan otomatis muncul di website Anda!
+
+4. Anda bisa menulis cerita atau detail teknis tambahan menggunakan format tulisan _Markdown_ biasa di bawah garis `---` tersebut. Proyek ini akan otomatis muncul di website Anda!
 
 ## 📜 Lisensi
 
-Proyek ini bersifat *open-source* dan tersedia di bawah [Lisensi MIT](LICENSE).
+Proyek ini bersifat _open-source_ dan tersedia di bawah [Lisensi MIT](LICENSE).

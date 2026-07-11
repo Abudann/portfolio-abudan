@@ -65,7 +65,7 @@ export function TypingText({
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-        className="inline-block w-[2px] h-[1em] bg-accent-400 ml-0.5 align-text-bottom"
+        className="bg-accent-400 ml-0.5 inline-block h-[1em] w-[2px] align-text-bottom"
         aria-hidden="true"
       />
     </span>
