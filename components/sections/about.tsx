@@ -48,8 +48,8 @@ export function About() {
           <motion.div {...fadeInUp} className="relative flex-shrink-0">
             <div className="shadow-card relative h-72 w-72 overflow-hidden rounded-2xl border border-[var(--border)] md:h-80 md:w-80">
               <Image
-                src="/images/abudan-formal.jpeg"
-                alt="Foto Abudan — Software Engineer di Jakarta"
+                src="/images/about-coding.jpg"
+                alt="Foto Abudan sedang coding dengan VS Code di cafe"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 288px, 320px"
