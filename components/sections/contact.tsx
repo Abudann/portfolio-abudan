@@ -7,7 +7,7 @@ import { Send, MapPin, Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/utils";
-import { LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { LinkedInIcon, WhatsAppIcon, GitHubIcon } from "@/components/ui/icons";
 
 export function Contact() {
   const prefersReducedMotion = useReducedMotion();
@@ -126,6 +126,15 @@ export function Contact() {
                 Social Media
               </h4>
               <div className="flex gap-4">
+                <a
+                  href={siteConfig.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:border-accent-400 hover:text-accent-400 hover:bg-accent-400/5 flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border)] text-[var(--foreground-secondary)] transition-all"
+                  aria-label="GitHub"
+                >
+                  <GitHubIcon className="h-4 w-4" />
+                </a>
                 <a
                   href={siteConfig.social.linkedin}
                   target="_blank"

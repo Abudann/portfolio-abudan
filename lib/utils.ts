@@ -41,7 +41,7 @@ export const siteConfig = {
   availableForWork: true,
   social: {
     github: "https://github.com/Abudann",
-    linkedin: "https://linkedin.com/in/abudan",
+    linkedin: "https://www.linkedin.com/in/abudan-abudan-1551a32a0",
     email: "mailto:abudanoffice@gmail.com",
     whatsapp: formatWhatsAppLink(
       "0857-1006-3824",
