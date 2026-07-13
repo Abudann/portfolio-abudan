@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Folder } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ImageGallery } from "@/components/ui/image-gallery";
 import { getProjectBySlug, getProjectSlugs } from "@/lib/mdx";
 import { GitHubIcon } from "@/components/ui/icons";
 
@@ -158,27 +159,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         {/* Screenshots Gallery */}
         {frontmatter.screenshots && frontmatter.screenshots.length > 0 && (
-          <div className="mb-16">
-            <h2 className="font-heading mb-6 text-2xl font-bold text-[var(--foreground)]">
-              Galeri Tampilan
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {frontmatter.screenshots.map((imgSrc, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-video overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background-secondary)]"
-                >
-                  <Image
-                    src={imgSrc}
-                    alt={`${frontmatter.title} Screenshot ${i + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <ImageGallery images={frontmatter.screenshots} title={frontmatter.title} />
         )}
 
         {/* Render MDX content (usually deeper details if provided) */}
