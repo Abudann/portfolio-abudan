@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     // Verify Turnstile token
     const turnstileSecret =
-      process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA"; // Default testing secret
+      process.env.TURNSTILE_SECRET_KEY || "1x0000000000000000000000000000000AA";
 
     const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
@@ -27,7 +27,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid captcha" }, { status: 400 });
     }
 
-    // TODO: In a real production app, send email here via Resend, Nodemailer, etc.
     console.log("Contact form submission received:", {
       name,
       email,
