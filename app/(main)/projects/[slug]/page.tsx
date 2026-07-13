@@ -156,6 +156,31 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
 
+        {/* Screenshots Gallery */}
+        {frontmatter.screenshots && frontmatter.screenshots.length > 0 && (
+          <div className="mb-16">
+            <h2 className="font-heading mb-6 text-2xl font-bold text-[var(--foreground)]">
+              Galeri Tampilan
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {frontmatter.screenshots.map((imgSrc, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-video overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background-secondary)]"
+                >
+                  <Image
+                    src={imgSrc}
+                    alt={`${frontmatter.title} Screenshot ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Render MDX content (usually deeper details if provided) */}
         <div className="prose prose-zinc dark:prose-invert prose-headings:font-heading prose-a:text-accent-400 hover:prose-a:text-accent-300 max-w-none">
           <MDXRemote source={content} />
