@@ -13,16 +13,16 @@ export default async function Home() {
       {/* Hero Section */}
       <Hero />
 
-      {/* About Section — Step 5 */}
+      {/* About Section */}
       <About />
 
-      {/* Skills Section — Step 6 */}
+      {/* Skills Section */}
       <Skills />
 
-      {/* Projects Section — Step 7 */}
+      {/* Projects Section */}
       <Projects projects={projects} />
 
-      {/* Contact Section — Step 9 */}
+      {/* Contact Section */}
       <Contact />
     </div>
   );

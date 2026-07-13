@@ -77,7 +77,7 @@ export function Projects({ projects }: ProjectsProps) {
         <motion.div
           id="project-grid"
           role="tabpanel"
-          key={activeCategory} // Force re-render animation when category changes
+          key={activeCategory}
           variants={containerVariants as any}
           initial="hidden"
           animate="visible"

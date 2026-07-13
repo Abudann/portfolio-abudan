@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ExternalLink, Folder } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Badge } from "@/components/ui/badge";
@@ -78,7 +79,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
           {/* Hero Thumbnail */}
           <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)]">
-            <Folder className="h-20 w-20 text-[var(--foreground-muted)] opacity-50" />
+            {frontmatter.thumbnail ? (
+              <Image
+                src={frontmatter.thumbnail}
+                alt={frontmatter.title}
+                fill
+                sizes="(max-width: 1200px) 100vw, 800px"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <Folder className="h-20 w-20 text-[var(--foreground-muted)] opacity-50" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/40 to-transparent" />
           </div>
         </header>
