@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://yourdomain.com/sitemap.xml",
+    sitemap: "https://portfolio-abudan.vercel.app/sitemap.xml",
   };
 }

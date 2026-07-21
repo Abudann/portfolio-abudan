@@ -75,4 +75,74 @@ Kini saya menempuh S1 Informatika di Universitas Nusa Mandiri dengan fokus Rekay
       { name: "English", level: "Professional Working Proficiency" },
     ],
   },
+  experience: [
+    {
+      company: "NusantaraLens",
+      position: "Fullstack Web Developer",
+      type: "Project-Based",
+      location: "Jakarta, Indonesia",
+      startDate: "Feb 2026",
+      endDate: "July 2026",
+      description:
+        "Mengembangkan aplikasi web NusantaraLens yang mengintegrasikan fitur Asisten AI dengan fokus pada UI/UX interaktif.",
+      responsibilities: [
+        "Merancang dan mengimplementasikan komponen front-end utama (Navbar, Hero, AI Assistant)",
+        "Membangun aplikasi menggunakan React dengan Vite, mengelola state management",
+        "Berkolaborasi dalam tim untuk integrasi front-end dan back-end",
+      ],
+      techStack: ["React", "Vite", "JavaScript"],
+    },
+    {
+      company: "Proyek UniQuest (Lomba PIKMI)",
+      position: "Admin Dashboard Developer",
+      type: "Competition",
+      location: "Universitas Nusa Mandiri, Jakarta",
+      startDate: "Nov 2024",
+      endDate: "Nov 2024",
+      description:
+        "Mengembangkan UniQuest, platform untuk absensi, riwayat aktivitas, penilaian perilaku, dan sistem reward mahasiswa.",
+      responsibilities: [
+        "Membangun dashboard admin responsif menggunakan ReactJS dan Tailwind CSS",
+        "Bekerja sama dalam tim dengan pembagian tugas front-end dan back-end",
+      ],
+      techStack: ["React", "Tailwind CSS"],
+    },
+    {
+      company: "Universitas Azzahra",
+      position: "Teknisi Jaringan (Magang)",
+      type: "Internship",
+      location: "Jakarta, Indonesia",
+      startDate: "Feb 2023",
+      endDate: "Mar 2023",
+      description:
+        "Menginstalasi infrastruktur jaringan dan melakukan troubleshooting perangkat jaringan di lingkungan kampus.",
+      responsibilities: [
+        "Menginstalasi kabel LAN dan perangkat jaringan di ruang kelas serta laboratorium",
+        "Melakukan pengecekan koneksi internet dan troubleshooting perangkat jaringan",
+        "Membantu tim IT dalam penyusunan dokumentasi konfigurasi",
+      ],
+      techStack: ["LAN/WLAN", "Mikrotik", "Troubleshooting"],
+    },
+  ],
+  education: [
+    {
+      institution: "Universitas Nusa Mandiri",
+      degree: "S1 Informatika",
+      focus: "Rekayasa Perangkat Lunak",
+      startYear: "2024",
+      endYear: "2027 (Estimasi)",
+      gpa: "3.95/4.00",
+      description:
+        "Aktif terlibat dalam pengembangan aplikasi, proyek teknologi, dan kompetisi inovasi digital.",
+    },
+    {
+      institution: "SMK Jakarta Timur 1",
+      degree: "Teknik Komputer dan Jaringan",
+      focus: "Jaringan Komputer",
+      startYear: "2021",
+      endYear: "2024",
+      description:
+        "Fokus pada jaringan komputer, instalasi infrastruktur, dan troubleshooting sistem operasional.",
+    },
+  ],
 } as const;

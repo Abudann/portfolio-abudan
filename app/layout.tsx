@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://portfolio-abudan.vercel.app"),
   title: {
     default: "Abudan — Software Engineer Portfolio",
     template: "%s | Abudan",

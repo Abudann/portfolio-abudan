@@ -82,7 +82,7 @@ export function Contact() {
 
             <div className="space-y-6">
               <a
-                href={`mailto:${siteConfig.social.email}`}
+                href={`mailto:${siteConfig.email}`}
                 className="group hover:text-accent-400 flex items-center gap-4 text-[var(--foreground-secondary)] transition-colors"
               >
                 <div className="group-hover:bg-accent-400/10 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--background-secondary)] transition-colors">
@@ -90,7 +90,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-[var(--foreground)]">Email</p>
-                  <p className="text-sm">{siteConfig.social.email}</p>
+                  <p className="text-sm">{siteConfig.email}</p>
                 </div>
               </a>
 
