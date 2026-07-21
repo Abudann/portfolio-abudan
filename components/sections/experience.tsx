@@ -9,14 +9,12 @@ import { siteConfig } from "@/lib/utils";
 export function Experience() {
   const prefersReducedMotion = useReducedMotion();
 
-  const fadeInUp = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 24 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease: "easeOut" as const },
-      };
+  const fadeInUpProps = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" as const },
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  };
 
   return (
     <section id="experience" className="py-24 md:py-32">
@@ -34,7 +32,7 @@ export function Experience() {
           {siteConfig.experience.map((exp, index) => (
             <motion.div
               key={index}
-              {...(fadeInUp as any)}
+              {...(prefersReducedMotion ? {} : fadeInUpProps)}
               className={`relative mb-12 flex flex-col last:mb-0 md:flex-row ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}

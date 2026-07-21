@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Card } from "@/components/ui/card";
-import { Code2, Database, Globe, Layout, Server, Terminal, Wrench, Users } from "lucide-react";
+import { Database, Layout, Server, Terminal, Users } from "lucide-react";
 
 const skillsData = [
   {
@@ -61,22 +61,18 @@ const skillsData = [
 export function Skills() {
   const prefersReducedMotion = useReducedMotion();
 
-  const containerVariants = prefersReducedMotion
-    ? {}
-    : {
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.1 },
-        },
-      };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
 
-  const itemVariants = prefersReducedMotion
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-      };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <section id="skills" className="bg-[var(--background-secondary)] py-24">
@@ -88,7 +84,7 @@ export function Skills() {
 
         <motion.div
           className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants as any}
+          variants={prefersReducedMotion ? undefined : containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -96,7 +92,10 @@ export function Skills() {
           {skillsData.map((category) => {
             const Icon = category.icon;
             return (
-              <motion.div key={category.category} variants={itemVariants as any}>
+              <motion.div
+                key={category.category}
+                variants={prefersReducedMotion ? undefined : itemVariants}
+              >
                 <Card className="h-full bg-[var(--background)]">
                   <div className="mb-6 flex items-center gap-3">
                     <div className="bg-accent-400/10 flex h-10 w-10 items-center justify-center rounded-xl">

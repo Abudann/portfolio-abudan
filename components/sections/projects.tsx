@@ -21,22 +21,18 @@ export function Projects({ projects }: ProjectsProps) {
       ? projects
       : projects.filter((p) => p.frontmatter.category === activeCategory);
 
-  const containerVariants = prefersReducedMotion
-    ? {}
-    : {
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.1 },
-        },
-      };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
 
-  const itemVariants = prefersReducedMotion
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-      };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
 
   return (
     <section id="projects" className="py-24">
@@ -78,7 +74,7 @@ export function Projects({ projects }: ProjectsProps) {
           id="project-grid"
           role="tabpanel"
           key={activeCategory}
-          variants={containerVariants as any}
+          variants={prefersReducedMotion ? undefined : containerVariants}
           initial="hidden"
           animate="visible"
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
@@ -86,7 +82,7 @@ export function Projects({ projects }: ProjectsProps) {
           {filteredProjects.map((project) => (
             <motion.div
               key={project.frontmatter.slug}
-              variants={itemVariants as any}
+              variants={prefersReducedMotion ? undefined : itemVariants}
               className="relative"
             >
               <ProjectCard project={project} />

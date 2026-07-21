@@ -9,14 +9,12 @@ import { siteConfig } from "@/lib/utils";
 export function Education() {
   const prefersReducedMotion = useReducedMotion();
 
-  const fadeInUp = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 24 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease: "easeOut" as const },
-      };
+  const fadeInUpProps = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" as const },
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  };
 
   return (
     <section id="education" className="bg-[var(--background-secondary)] py-24 md:py-32">
@@ -30,7 +28,7 @@ export function Education() {
           {siteConfig.education.map((edu, index) => (
             <motion.div
               key={index}
-              {...(fadeInUp as any)}
+              {...(prefersReducedMotion ? {} : fadeInUpProps)}
               className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)] p-6 transition-all hover:border-[var(--accent-400)]/30 md:p-8"
             >
               {/* Accent decoration */}

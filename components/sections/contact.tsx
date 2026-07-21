@@ -51,14 +51,12 @@ export function Contact() {
     }
   };
 
-  const fadeInUp = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 24 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.5, ease: "easeOut" as const },
-      };
+  const fadeInUpProps = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" as const },
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  };
 
   return (
     <section id="contact" className="bg-[var(--background)] py-24">
@@ -70,7 +68,7 @@ export function Contact() {
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Info */}
-          <motion.div {...(fadeInUp as any)}>
+          <motion.div {...(prefersReducedMotion ? {} : fadeInUpProps)}>
             <h3 className="font-heading mb-6 text-2xl font-bold text-[var(--foreground)]">
               Mari Berkolaborasi
             </h3>
@@ -149,7 +147,10 @@ export function Contact() {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div {...(fadeInUp as any)} className="glass rounded-2xl p-6 md:p-8">
+          <motion.div
+            {...(prefersReducedMotion ? {} : fadeInUpProps)}
+            className="glass rounded-2xl p-6 md:p-8"
+          >
             {status === "success" ? (
               <div className="flex h-full flex-col items-center justify-center py-12 text-center">
                 <div className="bg-success/10 mb-4 flex h-16 w-16 items-center justify-center rounded-full">

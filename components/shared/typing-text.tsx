@@ -24,14 +24,10 @@ export function TypingText({
   const [isDeleting, setIsDeleting] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // If reduced motion, just show the first text statically
-  if (prefersReducedMotion) {
-    return <span className={className}>{texts[0]}</span>;
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    const currentText = texts[textIndex];
+    if (prefersReducedMotion) return;
+
+    const currentText = texts[textIndex] || "";
 
     if (!isDeleting) {
       if (displayText.length < currentText.length) {
@@ -49,15 +45,21 @@ export function TypingText({
           setDisplayText(displayText.slice(0, -1));
         }, deleteSpeed);
       } else {
-        setIsDeleting(false);
-        setTextIndex((prev) => (prev + 1) % texts.length);
+        timeoutRef.current = setTimeout(() => {
+          setIsDeleting(false);
+          setTextIndex((prev) => (prev + 1) % texts.length);
+        }, deleteSpeed);
       }
     }
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [displayText, isDeleting, textIndex, texts, speed, deleteSpeed, pauseDuration]);
+  }, [displayText, isDeleting, textIndex, texts, speed, deleteSpeed, pauseDuration, prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return <span className={className}>{texts[0]}</span>;
+  }
 
   return (
     <span className={className}>

@@ -43,7 +43,7 @@ export default function PrivacyPolicy() {
             To prevent spam and abuse on the contact form, this website uses{" "}
             <strong>Cloudflare Turnstile</strong>. Cloudflare may collect standard web log
             information and data about your interaction with the Turnstile widget to determine
-            whether you are a human or a bot. Please refer to Cloudflare's privacy policy for more
+            whether you are a human or a bot. Please refer to Cloudflare&apos;s privacy policy for more
             information.
           </p>
           <p>
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
           <h2>4. Data Usage and Retention</h2>
           <p>
             Any information submitted through the contact form is sent directly to my personal email
-            address ({siteConfig.social.email}). The data is not stored in any database on this
+            address ({siteConfig.email}). The data is not stored in any database on this
             server. I will only use this information to reply to your inquiry.
           </p>
 
@@ -63,10 +63,10 @@ export default function PrivacyPolicy() {
             If you have any questions or concerns about this Privacy Policy, please contact me via
             email at{" "}
             <a
-              href={`mailto:${siteConfig.social.email}`}
+              href={`mailto:${siteConfig.email}`}
               className="text-accent-400 hover:underline"
             >
-              {siteConfig.social.email}
+              {siteConfig.email}
             </a>
             .
           </p>

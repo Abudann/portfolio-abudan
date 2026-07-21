@@ -8,7 +8,6 @@ import {
   Lightbulb,
   Target,
   Sparkles,
-  Gamepad2,
   Dumbbell,
   Wrench,
 } from "lucide-react";
@@ -17,7 +16,6 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { siteConfig } from "@/lib/utils";
 
 const funFactIcons = [Wrench, Lightbulb, Dumbbell];
-const hobbyIcons = [Gamepad2, Wrench, Dumbbell];
 
 export function About() {
   const prefersReducedMotion = useReducedMotion();

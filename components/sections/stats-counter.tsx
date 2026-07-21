@@ -14,13 +14,12 @@ interface StatItemProps {
 
 function StatItem({ icon: Icon, value, suffix = "", label }: StatItemProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(() => (prefersReducedMotion ? value : 0));
   const ref = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      setCount(value);
       return;
     }
 
