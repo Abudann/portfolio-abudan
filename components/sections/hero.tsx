@@ -5,7 +5,6 @@ import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Mail, ChevronDown, Download, FolderOpen } from "lucide-react";
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { TypingText } from "@/components/shared/typing-text";
 import { siteConfig } from "@/lib/utils";
 import { StatsCounter } from "./stats-counter";
@@ -130,17 +129,20 @@ export function Hero() {
             {/* CTA buttons */}
             <MotionItem {...itemProps}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#projects">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                    <FolderOpen className="h-4 w-4" />
-                    Lihat Project
-                  </Button>
+                <a
+                  href="#projects"
+                  className="bg-accent-400 text-navy-950 hover:bg-accent-300 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl px-8 text-base font-semibold transition-all duration-200 hover:scale-[1.02] hover:shadow-lg active:scale-[0.97] sm:w-auto"
+                >
+                  <FolderOpen className="h-4 w-4" />
+                  Lihat Project
                 </a>
-                <a href="/cv/Abudan_CV.pdf" download>
-                  <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                    <Download className="h-4 w-4" />
-                    Download CV
-                  </Button>
+                <a
+                  href="/cv/Abudan_CV.pdf"
+                  download
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--glass-bg)] px-8 text-base font-semibold text-[var(--foreground)] backdrop-blur-sm transition-all duration-200 hover:border-accent-400 hover:text-accent-400 hover:shadow-soft active:scale-[0.97] sm:w-auto"
+                >
+                  <Download className="h-4 w-4" />
+                  Download CV
                 </a>
               </div>
             </MotionItem>

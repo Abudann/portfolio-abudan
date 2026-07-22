@@ -15,7 +15,11 @@ export function Contact() {
   const [token, setToken] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+
+  if (!turnstileSiteKey) {
+    console.warn("NEXT_PUBLIC_TURNSTILE_SITE_KEY is not configured — captcha will not work.");
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

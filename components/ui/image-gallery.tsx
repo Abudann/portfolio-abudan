@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -12,6 +12,29 @@ interface ImageGalleryProps {
 
 export function ImageGallery({ images, title }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Close lightbox on Escape key
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape" && selectedImage) {
+        setSelectedImage(null);
+      }
+    },
+    [selectedImage]
+  );
+
+  useEffect(() => {
+    if (selectedImage) {
+      document.addEventListener("keydown", handleKeyDown);
+      // Prevent body scroll when lightbox is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage, handleKeyDown]);
 
   if (!images || images.length === 0) return null;
 
@@ -26,6 +49,15 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
             key={i}
             className="group relative aspect-video cursor-pointer overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] transition-all hover:border-accent-400/50"
             onClick={() => setSelectedImage(imgSrc)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Lihat ${title} Screenshot ${i + 1} dalam ukuran penuh`}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setSelectedImage(imgSrc);
+              }
+            }}
           >
             <Image
               src={imgSrc}
@@ -49,6 +81,9 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
             onClick={() => setSelectedImage(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} — Tampilan gambar penuh`}
           >
             {/* Close Button */}
             <button
@@ -57,6 +92,8 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
                 setSelectedImage(null);
               }}
               className="absolute top-4 right-4 z-50 rounded-full bg-white/10 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/20 sm:top-8 sm:right-8"
+              aria-label="Tutup galeri gambar"
+              autoFocus
             >
               <X className="h-6 w-6" />
             </button>
@@ -68,7 +105,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.4 }}
               className="relative h-full max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()} // Prevent clicking image from closing modal
+              onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={selectedImage}
