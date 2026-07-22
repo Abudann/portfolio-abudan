@@ -40,7 +40,7 @@ export function Certificates() {
             <motion.div
               key={index}
               variants={prefersReducedMotion ? undefined : itemVariants}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)] p-6 transition-all hover:border-[var(--accent-400)]/30 hover:shadow-md hover:-translate-y-1"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)]/50 bg-[var(--background-secondary)]/40 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.01] hover:border-[var(--accent-400)]/30 hover:bg-[var(--background-secondary)]/60 hover:shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_10px_40px_-15px_rgba(255,255,255,0.05)]"
             >
               {cert.credentialUrl && (
                 <a
@@ -54,8 +54,9 @@ export function Certificates() {
                 </a>
               )}
 
-              {/* Background Accent */}
-              <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-400/5 transition-transform duration-500 group-hover:scale-150" />
+              {/* Premium Glow Effect */}
+              <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[var(--accent-400)]/10 blur-[50px] transition-all duration-500 group-hover:bg-[var(--accent-400)]/20" />
+              <div className="absolute -bottom-20 -left-20 h-32 w-32 rounded-full bg-[var(--accent-400)]/5 blur-[40px] transition-all duration-700 group-hover:bg-[var(--accent-400)]/10" />
 
               <div>
                 <div className="mb-4 flex items-center justify-between relative z-10">
