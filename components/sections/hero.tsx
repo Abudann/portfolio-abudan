@@ -176,7 +176,7 @@ export function Hero() {
               {/* Photo container */}
               <div className="border-accent-400/20 shadow-elevated relative h-64 w-64 overflow-hidden rounded-full border-2 md:h-80 md:w-80 lg:h-96 lg:w-96">
                 <Image
-                  src="/images/abudan-formal.jpeg"
+                  src="/images/abudan-formal.png"
                   alt="Foto profil Abudan — Software Engineer"
                   fill
                   className="object-cover"
