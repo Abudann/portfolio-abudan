@@ -3,11 +3,18 @@
 import { useState, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Turnstile } from "@marsidev/react-turnstile";
+import dynamic from "next/dynamic";
 import { Send, MapPin, Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/utils";
 import { LinkedInIcon, WhatsAppIcon, GitHubIcon } from "@/components/ui/icons";
+
+
+const DynamicTurnstile = dynamic(
+  () => import("@marsidev/react-turnstile").then((mod) => mod.Turnstile),
+  { ssr: false }
+);
 
 export function Contact() {
   const prefersReducedMotion = useReducedMotion();
@@ -231,7 +238,7 @@ export function Contact() {
 
                 {/* Cloudflare Turnstile */}
                 <div className="mt-2 flex justify-center overflow-hidden sm:justify-start">
-                  <Turnstile
+                  <DynamicTurnstile
                     siteKey={turnstileSiteKey}
                     onSuccess={setToken}
                     options={{
