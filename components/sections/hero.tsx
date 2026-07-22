@@ -179,7 +179,7 @@ export function Hero() {
                   src="/images/abudan-formal.png"
                   alt="Foto profil Abudan — Software Engineer"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_20%]"
                   priority
                   sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 />
