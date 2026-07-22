@@ -40,26 +40,32 @@ export function Certificates() {
             <motion.div
               key={index}
               variants={prefersReducedMotion ? undefined : itemVariants}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)] p-6 transition-all hover:border-[var(--accent-400)]/30 hover:shadow-md"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background-secondary)] p-6 transition-all hover:border-[var(--accent-400)]/30 hover:shadow-md hover:-translate-y-1"
             >
+              {cert.credentialUrl && (
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-20"
+                  aria-label={`View certificate for ${cert.title}`}
+                >
+                  <span className="sr-only">View certificate for {cert.title}</span>
+                </a>
+              )}
+
               {/* Background Accent */}
               <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-400/5 transition-transform duration-500 group-hover:scale-150" />
 
               <div>
-                <div className="mb-4 flex items-center justify-between">
+                <div className="mb-4 flex items-center justify-between relative z-10">
                   <div className="bg-accent-400/10 flex h-10 w-10 items-center justify-center rounded-xl">
                     <Award className="text-accent-400 h-5 w-5" />
                   </div>
                   {cert.credentialUrl && (
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[var(--foreground-muted)] hover:text-accent-400 transition-colors"
-                      aria-label={`View certificate for ${cert.title}`}
-                    >
+                    <div className="text-[var(--foreground-muted)] group-hover:text-accent-400 transition-colors">
                       <ExternalLink className="h-4 w-4" />
-                    </a>
+                    </div>
                   )}
                 </div>
 
