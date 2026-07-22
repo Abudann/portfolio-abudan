@@ -145,4 +145,48 @@ Kini saya menempuh S1 Informatika di Universitas Nusa Mandiri dengan fokus Rekay
         "Fokus pada jaringan komputer, instalasi infrastruktur, dan troubleshooting sistem operasional.",
     },
   ],
+  certificates: [
+    {
+      title: "Belajar Fundamental Back-End dengan JavaScript",
+      issuer: "Dicoding Academy",
+      date: "07 Juni 2026",
+      credentialId: "1RXYWJR4KZVM",
+      credentialUrl: "https://dicoding.com/certificates/1RXYWJR4KZVM",
+    },
+    {
+      title: "Belajar Fundamental Aplikasi Web dengan React",
+      issuer: "Dicoding Academy",
+      date: "17 April 2026",
+      credentialId: "JMZVO42NRXN9",
+      credentialUrl: "https://dicoding.com/certificates/JMZVO42NRXN9",
+    },
+    {
+      title: "Belajar Membuat Aplikasi Web dengan React",
+      issuer: "Dicoding Academy",
+      date: "09 April 2026",
+      credentialId: "L4PQ91GGOPO1",
+      credentialUrl: "https://dicoding.com/certificates/L4PQ91GGOPO1",
+    },
+    {
+      title: "Belajar Dasar Cloud dan Gen AI di AWS",
+      issuer: "Dicoding Academy",
+      date: "16 Februari 2026",
+      credentialId: "L4PQ9M9NOPO1",
+      credentialUrl: "https://dicoding.com/certificates/L4PQ9M9NOPO1",
+    },
+    {
+      title: "Belajar Membuat Front-End Web untuk Pemula",
+      issuer: "Dicoding Academy",
+      date: "02 April 2026",
+      credentialId: "0LZ0Y26E3X65",
+      credentialUrl: "https://dicoding.com/certificates/0LZ0Y26E3X65",
+    },
+    {
+      title: "React Native - Membuat To-Do List App",
+      issuer: "Universitas Nusa Mandiri",
+      date: "29 April 2025",
+      credentialId: "-",
+      credentialUrl: "",
+    },
+  ],
 } as const;

@@ -3,6 +3,7 @@ import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Education } from "@/components/sections/education";
+import { Certificates } from "@/components/sections/certificates";
 import { Projects } from "@/components/sections/projects";
 import { Contact } from "@/components/sections/contact";
 import { getAllProjects } from "@/lib/mdx";
@@ -26,6 +27,9 @@ export default async function Home() {
 
       {/* Education Section */}
       <Education />
+
+      {/* Certificates Section */}
+      <Certificates />
 
       {/* Projects Section */}
       <Projects projects={projects} />
