@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { siteConfig } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
 /*  Constants — Input Validation Limits                               */
@@ -8,6 +10,11 @@ const MAX_EMAIL = 254;
 const MAX_SUBJECT = 200;
 const MAX_MESSAGE = 5000;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/* ------------------------------------------------------------------ */
+/*  Resend Instance                                                   */
+/* ------------------------------------------------------------------ */
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /* ------------------------------------------------------------------ */
 /*  Simple In-Memory Rate Limiter (per serverless instance)           */
@@ -105,44 +112,55 @@ export async function POST(req: Request) {
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 
     if (!turnstileSecret) {
-      console.error("TURNSTILE_SECRET_KEY is not configured!");
+      console.warn("TURNSTILE_SECRET_KEY is not configured! Skipping turnstile verification for development.");
+    } else {
+      const verifyRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `secret=${turnstileSecret}&response=${token}`,
+        }
+      );
+
+      const verifyData = await verifyRes.json();
+
+      if (!verifyData.success) {
+        console.error("Turnstile verification failed:", verifyData);
+        return NextResponse.json(
+          { error: "Invalid captcha" },
+          { status: 400 }
+        );
+      }
+    }
+
+    // --- Send Email via Resend ---
+    const { data, error } = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: [siteConfig.email],
+      replyTo: validatedEmail,
+      subject: `[Portfolio] ${validatedSubject}`,
+      text: `Name: ${validatedName}\nEmail: ${validatedEmail}\n\nMessage:\n${validatedMessage}`,
+    });
+
+    if (error) {
+      console.error("Resend Error:", error);
       return NextResponse.json(
-        { error: "Server configuration error" },
+        { error: "Failed to send email via Resend" },
         { status: 500 }
       );
     }
 
-    const verifyRes = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `secret=${turnstileSecret}&response=${token}`,
-      }
-    );
-
-    const verifyData = await verifyRes.json();
-
-    if (!verifyData.success) {
-      console.error("Turnstile verification failed:", verifyData);
-      return NextResponse.json(
-        { error: "Invalid captcha" },
-        { status: 400 }
-      );
-    }
-
-    // --- Log masked submission (no sensitive data exposed) ---
+    // --- Log masked submission ---
     const maskedEmail =
       validatedEmail.slice(0, 3) + "***@" + validatedEmail.split("@")[1];
-    console.log("Contact form submission received:", {
+    console.log("Contact form successfully sent email:", {
       from: maskedEmail,
       subject: validatedSubject,
+      id: data?.id,
     });
 
-    // Simulate network delay for realistic UX
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, id: data?.id });
   } catch (error) {
     console.error("Contact API Error:", error);
     return NextResponse.json(
